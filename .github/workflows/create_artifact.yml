@@ -1,0 +1,20 @@
+name: create_artifact
+
+on: push
+
+env:
+  ARTIFACT_NAME: arty
+
+jobs:
+  artificer:
+    runs-on: ubuntu-latest
+    name: artificer
+    steps:
+      - name: checkout_code
+        uses: actions/checkout@v4
+      - name: create_artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .
+       
